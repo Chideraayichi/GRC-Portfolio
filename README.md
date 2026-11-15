@@ -7,7 +7,7 @@
 
 This repository contains independent GRC (Governance, Risk, and Compliance) project work demonstrating hands-on experience in information security risk assessments, third-party vendor risk management, vulnerability management, and compliance documentation across regulated industries.
 
-Each project was developed to professional standards — formatted as real deliverables suitable for CISO, compliance leadership, and audit review. Frameworks applied include **NIST CSF 2.0**, **NIST SP 800-53**, **NIST SP 800-161**, **HIPAA Security Rule (45 CFR Part 164)**, **HITECH**, **AICPA Trust Services Criteria (SOC 2)**, and **ISO 27001**.
+Each project was developed to professional standards - formatted as real deliverables suitable for CISO, compliance leadership, and audit review. Frameworks applied include **NIST CSF 2.0**, **NIST SP 800-53**, **NIST SP 800-161**, **HIPAA Security Rule (45 CFR Part 164)**, **HITECH**, **AICPA Trust Services Criteria (SOC 2)**, and **ISO 27001**.
 
 ---
 
@@ -109,11 +109,11 @@ A full vulnerability management lifecycle program designed and executed for a fi
 
 **Environment:** Personal AWS account (lab) | **Framework:** NIST SP 800-53 Rev. 5, CIS AWS Foundations Benchmark, SOC 2 TSC | **Folder:** [cloud/01-aws-security-baseline](cloud/01-aws-security-baseline/)
 
-Built and hardened a live AWS account from scratch, then assessed it the way an auditor would. Every control is mapped to three frameworks and backed by screenshot evidence, including findings that were identified, triaged and remediated during the build.
+Built and hardened a live AWS account from scratch, then assessed it the way an auditor would. Every control is mapped to three frameworks and backed by screenshot evidence, including findings that were identified, triaged, and remediated during the build.
 
 **Includes:**
 - Root user protection, IAM Identity Center with admin and read-only auditor roles, MFA at every sign-in
-- Multi-Region CloudTrail with log file validation, encrypted log storage and a retention lifecycle
+- Multi-Region CloudTrail with log file validation, encrypted log storage, and a retention lifecycle
 - Continuous monitoring with AWS Config (8 rules), GuardDuty and IAM Access Analyzer
 - 16-control mapping table (NIST 800-53, CIS, SOC 2) with linked evidence
 - 3 documented findings: log validation remediation, Access Analyzer triage with a scoped archive rule, GuardDuty incident response plan
@@ -121,12 +121,13 @@ Built and hardened a live AWS account from scratch, then assessed it the way an 
 
 | Domain | Details |
 |---|---|
-| **Frameworks** | NIST CSF 2.0, NIST SP 800-53, NIST SP 800-161, HIPAA/HITECH, SOC 2 (AICPA TSC), ISO 27001 |
+| **Frameworks** | NIST CSF 2.0, NIST SP 800-53, NIST SP 800-161, HIPAA/HITECH, SOC 2 (AICPA TSC), ISO 27001, CIS AWS Foundations Benchmark |
 | **GRC Work** | Risk Assessments, Vendor Risk Management, SOC 2 Readiness, Vulnerability Management, Control Validation, Compliance Documentation |
 | **Artifacts** | Risk Registers, Remediation Roadmaps, Vendor Questionnaires, SOC 2 Gap Analysis, Vulnerability Assessment Reports, Executive Summaries |
 | **Industries** | Healthcare (HIPAA), Legal / Law Firm, Technology |
+| **Cloud Security** | AWS IAM Identity Center, CloudTrail, AWS Config, GuardDuty, IAM Access Analyzer, S3 security controls, cloud control mapping |
 | **Tools** | ServiceNow GRC, RSA Archer, OneTrust, Splunk, Tenable.sc, OpenVAS |
-| **Certifications** | CompTIA Security+ ce \| CISA (in progress) \| B.S. Cybersecurity — UMGC (December 2024) |
+| **Certifications** | CompTIA Security+ ce \| CISA (in progress) \| B.S. Cybersecurity - UMGC (December 2024) |
 
 ---
 
@@ -137,4 +138,4 @@ Built and hardened a live AWS account from scratch, then assessed it the way an 
 
 ---
 
-*All organizations and vendors referenced in these projects are entirely fictional and created for portfolio demonstration purposes only.*
+*Organizations and vendors in Projects 1–5 are fictional and created for portfolio demonstration purposes. Project 6 was built in a personal AWS lab account.*
