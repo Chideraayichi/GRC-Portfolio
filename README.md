@@ -105,7 +105,18 @@ A full vulnerability management lifecycle program designed and executed for a fi
 - Governance artifacts suitable for audit review and compliance evidence
 
 ---
+### 6. AWS Security Baseline — Hands-On Cloud Build
 
+**Environment:** Personal AWS account (lab) | **Framework:** NIST SP 800-53 Rev. 5, CIS AWS Foundations Benchmark, SOC 2 TSC | **Folder:** [cloud/01-aws-security-baseline](cloud/01-aws-security-baseline/)
+
+Built and hardened a live AWS account from scratch, then assessed it the way an auditor would. Every control is mapped to three frameworks and backed by screenshot evidence, including findings that were identified, triaged and remediated during the build.
+
+**Includes:**
+- Root user protection, IAM Identity Center with admin and read-only auditor roles, MFA at every sign-in
+- Multi-Region CloudTrail with log file validation, encrypted log storage and a retention lifecycle
+- Continuous monitoring with AWS Config (8 rules), GuardDuty and IAM Access Analyzer
+- 16-control mapping table (NIST 800-53, CIS, SOC 2) with linked evidence
+- 3 documented findings: log validation remediation, Access Analyzer triage with a scoped archive rule, GuardDuty incident response plan
 ## Skills Demonstrated
 
 | Domain | Details |
