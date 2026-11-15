@@ -13,7 +13,7 @@ I built and hardened an AWS account from scratch, then assessed it the way an au
 
 ## Architecture
 
-![Architecture diagram](Evidence/architecture.png)
+![Architecture diagram](Evidence/architecture.drawio.png)
 
 - **Identity:** IAM Identity Center (single-Region instance, US East – Ohio) with two permission sets: `AdminAccess` and `AuditorReadOnly`
 - **Logging:** multi-Region CloudTrail trail `org-audit-trail`, delivered to an encrypted, non-public S3 bucket with log file validation and a retention lifecycle
@@ -89,22 +89,22 @@ NIST IDs are SP 800-53 Rev. 5. "CIS AWS section" refers to the section of the CI
 
 | # | Control | AWS implementation | NIST 800-53 | CIS AWS section | SOC 2 | Evidence |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | Privileged account protection | Root MFA on, no root access keys, root unused | IA-2(1), AC-6(5), AC-2 | IAM | CC6.1 | [P1-01](Evidence/P1-01-root-mfa-enabled.png), [P1-02](Evidence/P1-02-root-no-access-keys.png) |
-| 2 | Security contact registered | Alternate contacts for Billing, Ops, Security | IR-6 | IAM | CC2.3 | [P1-03](Evidence/P1-03-alternate-contacts.png) |
-| 3 | Centralized identity | IAM Identity Center users | AC-2, IA-2 | IAM | CC6.2 | [P2-04](Evidence/P2-04-auditor-access-denied.png), [P3-04](Evidence/P3-04-cloudtrail-event-history.png) |
-| 4 | Role-based least privilege | AdminAccess and AuditorReadOnly permission sets; access-denied test | AC-3, AC-6 | IAM | CC6.3 | [P2-02](Evidence/P2-02-permission-sets.png), [P2-04](Evidence/P2-04-auditor-access-denied.png) |
-| 5 | Multi-factor authentication | MFA required at every sign-in | IA-2(1), IA-2(2) | IAM | CC6.1 | [P2-03](Evidence/P2-03-mfa-required-settings.png) |
-| 6 | Session limits | 1-hour admin session duration | AC-12 | Not covered | CC6.1 | [P2-02](Evidence/P2-02-permission-sets.png) |
-| 7 | Audit logging | Multi-Region CloudTrail, management events | AU-2, AU-3, AU-12 | Logging | CC7.2 | [P3-01](Evidence/P3-01b-trail-multiregion-validation-AFTER.png) |
-| 8 | Log integrity | Log file validation on | AU-9 | Logging | CC7.2 | [P3-01](Evidence/P3-01b-trail-multiregion-validation-AFTER.png) |
-| 9 | Log protection | Encrypted log bucket, Block Public Access | AU-9, SC-28 | Logging | CC6.1 | [P3-02a](Evidence/P3-02a-log-bucket-encryption.png), [P3-02b](Evidence/P3-02b-log-bucket-block-public-access.png) |
-| 10 | Log retention | Glacier at 90 days, expire at 365 days | AU-11 | Not covered | CC7.2 | [P3-03](Evidence/P3-03-log-bucket-lifecycle-rule.png) |
-| 11 | Configuration monitoring | AWS Config recorder and 8 managed rules | CM-2, CM-6, CA-7 | Logging | CC7.1 | [P4-01](Evidence/P4-01-config-rules-compliance.png) |
-| 12 | Threat detection | GuardDuty enabled, sample findings reviewed | SI-4, IR-4 | Not covered | CC7.2, CC7.3 | [P4-02](Evidence/P4-02-guardduty-sample-finding.png) |
-| 13 | External access review | Access Analyzer, findings triaged, scoped archive rule | AC-3, CA-7 | IAM | CC6.1 | [P4-03a](Evidence/P4-03a-access-analyzer-finding-detail.png), [P4-03b](Evidence/P4-03b-access-analyzer-zero-active.png), [P4-03c](Evidence/P4-03c-archive-rule.png) |
-| 14 | Public storage prevention | Account-level S3 Block Public Access | AC-3, SC-7 | Storage | CC6.1, CC6.6 | [P5-02](Evidence/P5-02-s3-account-block-public-access.png) |
-| 15 | Encryption at rest | EBS encryption by default; S3 SSE | SC-28 | Storage | CC6.1 | [P5-03](Evidence/P5-03-ebs-default-encryption.png), [P3-02a](Evidence/P3-02a-log-bucket-encryption.png) |
-| 16 | Asset inventory | Tagging standard; Config resource inventory | CM-8 | Not covered | CC6.1 | [P5-04](Evidence/P5-04-tagging-standard.png) |
+| 1 | Privileged account protection | Root MFA on, no root access keys, root unused | IA-2(1), AC-6(5), AC-2 | IAM | CC6.1 | [P1-01](Evidence/P1-01-root-mfa-enabled.PNG), [P1-02](Evidence/P1-02-root-no-access-keys.PNG) |
+| 2 | Security contact registered | Alternate contacts for Billing, Ops, Security | IR-6 | IAM | CC2.3 | [P1-03](Evidence/P1-03-alternate-contacts.PNG) |
+| 3 | Centralized identity | IAM Identity Center users | AC-2, IA-2 | IAM | CC6.2 | [P2-04](Evidence/P2-04-auditor-access-denied.PNG), [P2-05](Evidence/P2-05-admin-session-not-root.PNG), [P3-04](Evidence/P3-04a-cloudtrail-event-history.PNG) |
+| 4 | Role-based least privilege | AdminAccess and AuditorReadOnly permission sets; access-denied test | AC-3, AC-6 | IAM | CC6.3 | [P2-02](Evidence/P2-02-permission-sets.PNG), [P2-04](Evidence/P2-04-auditor-access-denied.PNG) |
+| 5 | Multi-factor authentication | MFA required at every sign-in | IA-2(1), IA-2(2) | IAM | CC6.1 | [P2-03](Evidence/P2-03-mfa-required-settings.PNG) |
+| 6 | Session limits | 1-hour admin session duration | AC-12 | Not covered | CC6.1 | [P2-02](Evidence/P2-02-permission-sets.PNG) |
+| 7 | Audit logging | Multi-Region CloudTrail, management events | AU-2, AU-3, AU-12 | Logging | CC7.2 | [P3-01](Evidence/P3-01-trail-multiregion-validation.PNG) |
+| 8 | Log integrity | Log file validation on | AU-9 | Logging | CC7.2 | [P3-01](Evidence/P3-01-trail-multiregion-validation.PNG) |
+| 9 | Log protection | Encrypted log bucket, Block Public Access | AU-9, SC-28 | Logging | CC6.1 | [P3-02a](Evidence/P3-02a-log-bucket-encryption.PNG), [P5-02](Evidence/P5-02.PNG) |
+| 10 | Log retention | Glacier at 90 days, expire at 365 days | AU-11 | Not covered | CC7.2 | [P3-03](Evidence/P3-03-log-bucket-lifecycle-rule.PNG) |
+| 11 | Configuration monitoring | AWS Config recorder and 8 managed rules | CM-2, CM-6, CA-7 | Logging | CC7.1 | [P4-01](Evidence/P4-01.PNG) |
+| 12 | Threat detection | GuardDuty enabled, sample findings reviewed | SI-4, IR-4 | Not covered | CC7.2, CC7.3 | [P4-02](Evidence/P4-02.PNG) |
+| 13 | External access review | Access Analyzer, findings triaged, scoped archive rule | AC-3, CA-7 | IAM | CC6.1 | [P4-03a](Evidence/P4-03a-access-analyzer-finding-detail.PNG), [P4-03b](Evidence/P4-03b.PNG), [P4-03c](Evidence/P4-03c-archive-rule.png) |
+| 14 | Public storage prevention | Account-level S3 Block Public Access | AC-3, SC-7 | Storage | CC6.1, CC6.6 | [P5-02](Evidence/P5-02.PNG) |
+| 15 | Encryption at rest | EBS encryption by default; S3 SSE | SC-28 | Storage | CC6.1 | [P5-03](Evidence/P5-03.PNG), [P3-02a](Evidence/P3-02a-log-bucket-encryption.PNG) |
+| 16 | Asset inventory | Tagging standard; Config resource inventory | CM-8 | Not covered | CC6.1 | [P5-04](Evidence/P5-04.PNG) |
 
 ## Findings and remediation
 
@@ -116,7 +116,7 @@ NIST IDs are SP 800-53 Rev. 5. "CIS AWS section" refers to the section of the CI
 | **Control** | AU-9 Protection of Audit Information; SOC 2 CC7.2 |
 | **Observation** | After creating `org-audit-trail`, a post-deployment review showed log file validation was **disabled**. Without it, changes to or deletion of log files could go undetected. |
 | **Remediation** | Edited the trail and enabled log file validation. |
-| **Verification** | Trail details now show *Log file validation: Enabled* ([P3-01](Evidence/P3-01b-trail-multiregion-validation-AFTER.png)). The Config rule `cloud-trail-log-file-validation-enabled` now monitors this continuously, so a future regression would be flagged automatically. |
+| **Verification** | Trail details now show *Log file validation: Enabled* ([P3-01](Evidence/P3-01-trail-multiregion-validation.PNG)). The Config rule `cloud-trail-log-file-validation-enabled` now monitors this continuously, so a future regression would be flagged automatically. |
 | **Status** | Closed |
 
 ### Finding 2: IAM Access Analyzer reported external access on two IAM roles
@@ -128,7 +128,7 @@ NIST IDs are SP 800-53 Rev. 5. "CIS AWS section" refers to the section of the CI
 | **Observation** | Access Analyzer reported 2 active findings for roles under `aws-reserved/sso.amazonaws.com/`, trusted by a federated principal. |
 | **Analysis** | Reviewed each finding. Both roles were created by IAM Identity Center for the `AdminAccess` and `AuditorReadOnly` permission sets, and the external principal is the account's own Identity Center SAML provider. This is the intended sign-in path, not unintended exposure. |
 | **Action** | Archived both findings as intended access. Created a narrowly scoped archive rule (`archive-identity-center-roles`) matching only Identity Center–managed IAM roles, **with "Public access is false" added** so the rule can never hide a publicly assumable role. |
-| **Verification** | Active findings: 0 ([P4-03b](Evidence/P4-03b-access-analyzer-zero-active.png)); archive rule ([P4-03c](Evidence/P4-03c-archive-rule.png)). |
+| **Verification** | Active findings: 0 ([P4-03b](Evidence/P4-03b.PNG)); archive rule ([P4-03c](Evidence/P4-03c-archive-rule.png)). |
 | **Status** | Closed, accepted as intended access |
 
 ### Finding 3: GuardDuty sample finding (detection validation)
